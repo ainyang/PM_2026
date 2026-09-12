@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Victor Inyang — Data Science, Artificial Intelligence, Business Intelligence, and Computer Vision." />
+  <title>Victor Inyang | Data Science & AI</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-strong: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: rgba(23, 32, 51, 0.10);
+      --brand: #2563eb;
+      --brand-2: #7c3aed;
+      --brand-soft: #eef4ff;
+      --shadow: 0 24px 70px rgba(23, 32, 51, 0.10);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.10), transparent 32%),
+        radial-gradient(circle at 95% 15%, rgba(124, 58, 237, 0.10), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+      padding-top: 16px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.74);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(23,32,51,0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+      font-size: 0.85rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: #475467;
+      font-size: 0.94rem;
+      transition: 180ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: #fff;
+    }
+
+    .nav-links .contact-btn {
+      color: #fff;
+      background: var(--text);
+    }
+
+    .nav-links .contact-btn:hover {
+      background: #0f172a;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    header {
+      padding: 92px 0 46px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .section-card {
+      border: 1px solid rgba(255,255,255,0.92);
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      min-height: 540px;
+      border-radius: var(--radius-xl);
+      padding: clamp(32px, 5vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      bottom: -90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(37,99,235,0.20), rgba(124,58,237,0.20));
+      filter: blur(2px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 5px rgba(37,99,235,0.10);
+    }
+
+    h1 {
+      margin: 24px 0 14px;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      max-width: 8ch;
+    }
+
+    .hero-subtitle {
+      max-width: 700px;
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      color: #475467;
+      margin: 0;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: 180ms ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), #3b82f6);
+      box-shadow: 0 10px 24px rgba(37,99,235,0.24);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-side {
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .avatar {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(37,99,235,0.96), rgba(124,58,237,0.92));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::before,
+    .avatar::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+    }
+
+    .avatar::before { width: 160px; height: 160px; top: -45px; right: -45px; }
+    .avatar::after { width: 220px; height: 220px; bottom: -100px; left: -80px; }
+
+    .quick-facts {
+      display: grid;
+      gap: 12px;
+    }
+
+    .fact {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .fact:last-child { border-bottom: 0; }
+    .fact span { display: block; color: var(--muted); font-size: 0.82rem; margin-bottom: 2px; }
+    .fact strong { font-size: 0.98rem; }
+
+    section {
+      padding: 28px 0;
+      scroll-margin-top: 100px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .section-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      font-size: 1.08rem;
+      color: #344054;
+      margin: 0 0 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #344054;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      transition: 180ms ease;
+    }
+
+    .timeline-item:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(23,32,51,0.07);
+    }
+
+    .time {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .role h3,
+    .edu h3 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .role .company,
+    .edu .school {
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .role p,
+    .edu p { margin: 0; color: var(--muted); }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .edu {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      background: linear-gradient(135deg, #111827, #1f2a44);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact-panel::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59,130,246,0.32), rgba(124,58,237,0.32));
+    }
+
+    .contact-panel h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .contact-panel p {
+      margin: 0;
+      color: #cbd5e1;
+      max-width: 660px;
+    }
+
+    .contact-actions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    .contact-actions a {
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-weight: 700;
+      text-align: center;
+      transition: 180ms ease;
+    }
+
+    .contact-actions a:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-row a { color: var(--text); font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main { min-height: auto; }
+      .hero-side { display: grid; grid-template-columns: 220px 1fr; align-items: center; }
+      .education-grid { grid-template-columns: 1fr; }
+      .contact-actions { flex-direction: row; flex-wrap: wrap; min-width: 0; }
+      .contact-actions a { flex: 1 1 180px; }
+    }
+
+    @media (max-width: 680px) {
+      .container { width: min(calc(100% - 24px), var(--max)); }
+      .nav-wrap { top: 8px; padding-top: 8px; }
+      nav { border-radius: 22px; align-items: flex-start; }
+      .nav-links a:not(.contact-btn) { display: none; }
+      header { padding-top: 46px; }
+      .hero-main { padding: 28px; }
+      h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
+      .hero-side { grid-template-columns: 1fr; }
+      .avatar { max-height: 300px; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Victor Inyang home">
+          <span class="brand-mark">VI</span>
+          <span>Victor Inyang</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a class="contact-btn" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <header id="top">
+    <div class="container hero">
+      <div class="hero-main">
+        <div>
+          <div class="eyebrow">Data Science · AI · Computer Vision</div>
+          <h1>Victor Inyang</h1>
+          <p class="hero-subtitle">
+            Data professional with a master's in Data Science from UC Berkeley, focused on turning complex data into practical insights and intelligent solutions.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:inyang.victor@outlook.com">Email me</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/victor-inyang-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-label="Profile overview">
+        <div class="avatar" aria-label="Victor Inyang initials">VI</div>
+        <div class="quick-facts">
+          <div class="fact">
+            <span>Location</span>
+            <strong>Phoenix, Arizona, United States</strong>
+          </div>
+          <div class="fact">
+            <span>Education</span>
+            <strong>MS in Data Science · UC Berkeley</strong>
+          </div>
+          <div class="fact">
+            <span>Core strengths</span>
+            <strong>Data Science, AI, Knowledge Sharing</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>A concise view of the experience, interests, and technical focus that shape my work.</p>
+        </div>
+        <div class="section-card about-grid">
+          <div class="about-copy">
+            <p>
+              I apply data science to analyze, report, and visualize data for business reporting and analytics, working cross-functionally with engineers, researchers, and managers to support internal and external partners with data-driven insights and solutions.
+            </p>
+            <p>
+              My graduate work at the UC Berkeley School of Information focused on machine learning and deep learning for computer vision. Through coursework and projects, I developed experience with machine/deep learning algorithms and large-scale data tools and frameworks including TensorFlow, PyTorch, and Apache Spark ML.
+            </p>
+            <p>
+              My long-term goal is to use that background to contribute to innovation in computer vision and AI-driven products.
+            </p>
+          </div>
+          <div>
+            <div class="skills" aria-label="Skills">
+              <span class="chip">Data Science</span>
+              <span class="chip">Artificial Intelligence</span>
+              <span class="chip">Computer Vision</span>
+              <span class="chip">Machine Learning</span>
+              <span class="chip">Deep Learning</span>
+              <span class="chip">TensorFlow</span>
+              <span class="chip">PyTorch</span>
+              <span class="chip">Apache Spark ML</span>
+              <span class="chip">Business Intelligence</span>
+              <span class="chip">Data Visualization</span>
+              <span class="chip">Knowledge Sharing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <h2>Experience</h2>
+          <p>Professional experience spanning data science and business intelligence.</p>
+        </div>
+        <div class="section-card timeline">
+          <article class="timeline-item">
+            <div class="time">Aug 2020 — Aug 2024</div>
+            <div class="role">
+              <div class="company">Intel Corporation</div>
+              <h3>Data Science Analyst</h3>
+              <p>4 years, 1 month</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="time">Aug 2018 — Jan 2020</div>
+            <div class="role">
+              <div class="company">State Farm®</div>
+              <h3>Business Intelligence Analyst</h3>
+              <p>1 year, 6 months</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head">
+          <h2>Education</h2>
+          <p>Formal training in data science and mechanical engineering.</p>
+        </div>
+        <div class="section-card education-grid">
+          <article class="edu">
+            <div class="school">UC Berkeley School of Information</div>
+            <h3>Master of Information and Data Science</h3>
+            <p>Data Science · Aug 2021 — Aug 2023</p>
+          </article>
+
+          <article class="edu">
+            <div class="school">Arizona State University</div>
+            <h3>Bachelor's Degree, Mechanical Engineering</h3>
+            <p>Ira A. Fulton Schools of Engineering · 2015 — 2019</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-card contact-panel">
+          <div>
+            <h2>Let’s connect.</h2>
+            <p>
+              For opportunities, collaboration, or conversations around data science, AI, machine learning, and computer vision, feel free to reach out.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a href="mailto:inyang.victor@outlook.com">inyang.victor@outlook.com</a>
+            <a href="tel:+14804303430">(480) 430-3430</a>
+            <a href="https://www.linkedin.com/in/victor-inyang-profile" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Victor Inyang</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
